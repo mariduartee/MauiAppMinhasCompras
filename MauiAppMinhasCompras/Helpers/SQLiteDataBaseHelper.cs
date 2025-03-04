@@ -1,5 +1,4 @@
 ﻿using MauiAppMinhasCompras.Models;
-using Microsoft.Maui.Controls.PlatformConfiguration;
 using SQLite;
 
 namespace MauiAppMinhasCompras.Helpers
