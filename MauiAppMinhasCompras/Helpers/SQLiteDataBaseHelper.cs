@@ -55,7 +55,7 @@ bloquear a thread principal*/
 permitindo filtrar registros de acordo com uma string fornecida*/
         public Task<List<Produto>> Search(string q) 
         {
-            string sql = "SELECT * Produto WHERE descricao LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'";
 
             return _conn.QueryAsync<Produto>(sql);
         }
