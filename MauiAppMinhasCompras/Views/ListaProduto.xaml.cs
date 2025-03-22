@@ -18,6 +18,7 @@ public partial class ListaProduto : ContentPage
     {
         try
         {
+            //Remover a listagem duplicada
             lista.Clear();
              
             List<Produto> tmp = await App.Db.GetAll();
@@ -74,16 +75,21 @@ public partial class ListaProduto : ContentPage
     {
         try
         {
+            //Convertendo o sender (quem disparou o evento) para um MenuItem
             MenuItem selecinado = sender as MenuItem;
-
+            /*O BindingContext geralmente contém os dados do item associado ao menu, 
+             * então ele é convertido para um objeto da classe Produto*/
             Produto p = selecinado.BindingContext as Produto;
-
+            /*Exibe uma caixa de diálogo perguntando se o usuário quer remover o produto. 
+             * Se o usuário clicar em "Sim", confirm será true. Caso contrário, será false*/
             bool confirm = await DisplayAlert(
                 "Tem Certeza?", $"Remover {p.Descricao}?", "Sim", "Não");
-
+            //Se confirm for true, o código dentro do if será executado
             if (confirm)
             {
+                //Chama um método assíncrono para excluir o produto do banco de dados
                 await App.Db.Delete(p.Id);
+                //Remove o produto da lista que está sendo exibida na interface
                 lista.Remove(p);
             }
         }
