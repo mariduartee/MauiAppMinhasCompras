@@ -1,4 +1,5 @@
 ﻿using MauiAppMinhasCompras.Helpers;
+using System.Globalization;
 
 namespace MauiAppMinhasCompras
 {
@@ -37,6 +38,8 @@ Se não foi criada(primeira vez), ele cria a instância e a inicializa com o cam
         public App()
         {
             InitializeComponent();
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pr-br");
 
             //MainPage = new AppShell();
             MainPage = new NavigationPage(new Views.ListaProduto());
